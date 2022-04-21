@@ -1,42 +1,68 @@
 <script>
-	export let title;
 	import routes from './routes'
 	import Router from 'svelte-spa-router';
-	import Drawer, {AppContent, Content} from '@smui/drawer';
+	import Drawer, {AppContent, Content, Header, Title, Subtitle} from '@smui/drawer';
 	import List, {Item, Text} from '@smui/list';
+	import Button, {Label} from '@smui/button';
+
+	let open = false;
 </script>
 
-<title>{title}</title>
-<main>
-	<Drawer>
+<div class="drawer-container">
+	<Drawer bind:open variant="dismissible">
+		<Header>
+			<Title>Menu Button</Title>
+			<Subtitle>This is Navigator of Service</Subtitle>
+		</Header>
 		<Content>
 			<List>
 				{#each Object.keys(routes) as route}
 					<Item
 							href="{route}"
 					>
-						<Text>{routes[route].name}</Text>
+						<Text>{ routes[route].name }</Text>
 					</Item>
 				{/each}
 			</List>
 		</Content>
 	</Drawer>
-	<Router {routes}/>
-</main>
+	<AppContent class="app-content">
+		<main class="main-content">
+			<Button on:click={() => (open = !open)}>
+				<Label> Menu </Label>
+			</Button>
+			<Router {routes}/>
+		</main>
+	</AppContent>
+</div>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+	.drawer-container {
+		position: relative;
+		display: flex;
+		height: 100%;
+		width: 100%;
+		border: 1px solid;
+		overflow: hidden;
+		z-index: 0;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
+	* :global(.app-content) {
+		flex: auto;
+		overflow: auto;
+		position: relative;
+		flex-grow: 1;
+	}
+
+	.main-content {
+		overflow: auto;
+		padding: 16px;
+		height: 100%;
+		box-sizing: border-box;
+	}
+
+	.center {
+		margin: auto;
 	}
 
 	@media (min-width: 640px) {

@@ -7,12 +7,12 @@ export default {
     '/': Home,
 
     // Using named parameters, with last being optional
-    '/hello/:first/:last?': Home,
+    '/login': Home,
 
     // Wildcard parameter
     // Included twice to match both `/wild` (and nothing after) and `/wild/*` (with anything after)
-    '/wild': Home,
-    '/verify/*': Home,
+    '/me': Home,
+    '/verify/': Home,
 
     // Catch-all, must be last
     '*': Home,
