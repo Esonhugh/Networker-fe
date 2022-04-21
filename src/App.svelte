@@ -1,10 +1,27 @@
 <script>
-	export let name;
+	export let title;
+	import routes from './routes'
+	import Router from 'svelte-spa-router';
+	import Drawer, {AppContent, Content} from '@smui/drawer';
+	import List, {Item, Text} from '@smui/list';
 </script>
 
+<title>{title}</title>
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<Drawer>
+		<Content>
+			<List>
+				{#each Object.keys(routes) as route}
+					<Item
+							href="{route}"
+					>
+						<Text>{routes[route].name}</Text>
+					</Item>
+				{/each}
+			</List>
+		</Content>
+	</Drawer>
+	<Router {routes}/>
 </main>
 
 <style>
