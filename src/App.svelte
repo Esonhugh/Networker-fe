@@ -4,22 +4,20 @@
 	import Drawer, {AppContent, Content, Header, Title, Subtitle} from '@smui/drawer';
 	import List, {Item, Text} from '@smui/list';
 	import Button, {Label} from '@smui/button';
-
 	let open = false;
 </script>
 
 <div class="drawer-container">
 	<Drawer bind:open variant="dismissible">
 		<Header>
-			<Title>Menu Button</Title>
-			<Subtitle>This is Navigator of Service</Subtitle>
+			<Title>Menu</Title>
+			<Subtitle>Service Navigator</Subtitle>
 		</Header>
 		<Content>
 			<List>
 				{#each Object.keys(routes) as route}
-					<Item
-							href="{route}"
-					>
+					<Item href="#{route}">
+						<!-- add # to Make Navigator work nice -->
 						<Text>{ routes[route].name }</Text>
 					</Item>
 				{/each}
@@ -61,9 +59,6 @@
 		box-sizing: border-box;
 	}
 
-	.center {
-		margin: auto;
-	}
 
 	@media (min-width: 640px) {
 		main {

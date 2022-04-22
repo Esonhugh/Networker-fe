@@ -1,14 +1,17 @@
 <script>
-    export var mame; // Let we can read filename as route in url and auto navigator to there
+    export const name = 'Index'; // Let we can read filename as route in url and auto navigator to there
 </script>
 
-<h1> Welcome to DN42 Config Server </h1>
-<p> Hello </p>
+<div>
+    <h1> Welcome to DN42 Config Server </h1>
+    <p> Hello my friend. </p>
+    <p> Use the Menu Button to explorer the Site. </p>
+</div>
 
 <style>
     h1 {
+        text-align: center;
     }
-
     p {
         color: red;
         text-align: center;
