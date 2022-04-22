@@ -1,10 +1,13 @@
 <script>
 	import routes from './routes'
 	import Router from 'svelte-spa-router';
-	import Drawer, {AppContent, Content, Header, Title, Subtitle} from '@smui/drawer';
+
+	import Drawer, {AppContent, Content, Header, Subtitle, Title} from '@smui/drawer';
 	import List, {Item, Text} from '@smui/list';
 	import Button, {Label} from '@smui/button';
+
 	let open = false;
+
 </script>
 
 <div class="drawer-container">

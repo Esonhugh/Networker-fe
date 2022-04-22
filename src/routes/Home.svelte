@@ -1,5 +1,5 @@
 <script>
-    export const name = 'Index'; // Let we can read filename as route in url and auto navigator to there
+    export const name = 'Home'; // Let we can read filename as route in url and auto navigator to there
 </script>
 
 <div>
