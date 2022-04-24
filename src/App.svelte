@@ -8,6 +8,8 @@
 
 	let open = false;
 
+	import {GlobalRouter} from "./setting";
+	// console.log(Object.keys(GlobalRouter))
 </script>
 
 <div class="drawer-container">
@@ -18,10 +20,10 @@
 		</Header>
 		<Content>
 			<List>
-				{#each Object.keys(routes) as route}
+				{#each Object.keys(GlobalRouter) as route }
 					<Item href="#{route}">
 						<!-- add # to Make Navigator work nice -->
-						<Text>{ routes[route].name }</Text>
+						<Text>{ GlobalRouter[route] }</Text>
 					</Item>
 				{/each}
 			</List>

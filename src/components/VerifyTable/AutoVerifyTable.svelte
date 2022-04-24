@@ -1,4 +1,6 @@
 <script>
+    import Unfinished from "../Unfinished.svelte";
+
     export let Ticket;
 
     import {apiBase} from "../../setting";
@@ -39,6 +41,7 @@
 </script>
 
 <div>
+    <Unfinished/>
     {#await Promise}
         <pre>
             Authing ...

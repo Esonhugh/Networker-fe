@@ -2,7 +2,7 @@
     export const name = 'Config';
     import Card from '@smui/card';
     import {apiBase} from "../setting";
-    import ConfigTable from "../components/ConfigTable.svelte";
+    import ConfigTable from "../components/ConfigTable/ConfigTable.svelte";
 
     let configUrl = $apiBase + '/config';
 
@@ -24,7 +24,6 @@
             {#await getAdminConfig()}
                 <pre> Loading Admin Config .... </pre>
             {:then text}
-                {@debug text}
                 <ConfigTable configData="{text}"/>
             {:catch e}
                 <pre> Loading Error: {e.errormsg} </pre>

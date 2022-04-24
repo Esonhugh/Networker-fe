@@ -1,6 +1,6 @@
 <script>
     export const name = "Others";
-    import SimpleConfigList from "../components/SimpleConfigList.svelte";
+    import SimpleConfigList from "../components/ConfigTable/SimpleConfigList.svelte";
     import Card from '@smui/card';
     import {apiBase} from "../setting";
     let fetchUrl = $apiBase + "/peerinfo/list"

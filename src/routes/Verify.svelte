@@ -8,7 +8,8 @@
     export let params = {};
     let Ticket = "";
     let NoAutoSend = true;
-    if (params.wild === '*' || params.wild === '') { // 为 空 或者为 "*" 就自动验证
+    if (params.wild === '*' || params.wild === '' || params.wild === null) {
+        // 为 空 或者为 "*" 就手动验证
         Ticket = "";
     } else {
         Ticket = params.wild;
