@@ -8,8 +8,8 @@
 
     async function getAdminConfig() {
         const res = await fetch(configUrl);
-        const text = res.json();
-        if (res.StatusCode === 200) {
+        const text = await res.json();
+        if (res.ok) {
             return text;
         } else {
             throw text;
@@ -20,21 +20,23 @@
 <div>
     <Card>
         <h1> Admin Config </h1>
-        <ConfigTable/>
-        <!--
+        <!-- <ConfigTable/> -->
             {#await getAdminConfig()}
-                <p> Loading Admin Config .... </p>
+                <pre> Loading Admin Config .... </pre>
             {:then text}
-                <ConfigTable {text}/>
+                {@debug text}
+                <ConfigTable configData="{text}"/>
             {:catch e}
-                <p> Loading Error: {e.ErrorMsg} </p>
+                <pre> Loading Error: {e.errormsg} </pre>
             {/await}
-            -->
     </Card>
 </div>
 
 <style>
     h1 {
+        text-align: center;
+    }
+    pre {
         text-align: center;
     }
 </style>

@@ -2,17 +2,37 @@
     export const name = "Others";
     import SimpleConfigList from "../components/SimpleConfigList.svelte";
     import Card from '@smui/card';
+    import {apiBase} from "../setting";
+    let fetchUrl = $apiBase + "/peerinfo/list"
+    async function getFriendsConfig() {
+        const res = await fetch(fetchUrl);
+        const data = await res.json()
+        if (res.ok){
+            return data
+        }else {
+            throw data
+        }
+    }
 </script>
 
 <div>
     <Card>
         <h1>Config List</h1>
-        <SimpleConfigList/>
+        {#await getFriendsConfig()}
+            <pre>Loading....</pre>
+        {:then json}
+            <SimpleConfigList configList="{json}"/>
+        {:catch err}
+            <pre>{err.errormsg}</pre>
+        {/await}
     </Card>
 </div>
 
 <style>
     h1 {
+        text-align: center;
+    }
+    pre {
         text-align: center;
     }
 </style>
