@@ -1,15 +1,35 @@
 <script>
+
     export const name = 'Verify';
-    import {apiBase} from "../setting";
-    import {location} from 'svelte-spa-router';
+    import Card from "@smui/card";
+    import HandyVerifyTable from "../components/VerifyTable/HandyVerifyTable.svelte";
+    import AutoVerifyTable from "../components/VerifyTable/AutoVerifyTable.svelte";
 
-    let fetchurl = $apiBase + $location
-    console.log(fetchurl)
-
-    async function verifyHandler() {
+    export let params = {};
+    let Ticket = "";
+    let NoAutoSend = true;
+    if (params.wild === '*' || params.wild === '') { // 为 空 或者为 "*" 就自动验证
+        Ticket = "";
+    } else {
+        Ticket = params.wild;
+        NoAutoSend = false;
     }
 </script>
 
 <div>
-
+    <Card padding>
+        <h1>Verify Email Ticket</h1>
+        {#if NoAutoSend}
+            <HandyVerifyTable {Ticket}/>
+        {:else }
+            <AutoVerifyTable {Ticket}/>
+        {/if}
+    </Card>
 </div>
+
+<style>
+    h1 {
+        text-align: center;
+    }
+
+</style>

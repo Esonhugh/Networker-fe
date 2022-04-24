@@ -16,12 +16,9 @@
             "asn": "424242default"
         }
     ];
-    import Card from '@smui/card';
     import DataTable, {Body, Cell, Head, Row} from '@smui/data-table';
 </script>
 
-<h1>Config List</h1>
-<Card>
     <div>
         <DataTable>
             <Head>
@@ -42,15 +39,11 @@
             </Body>
         </DataTable>
     </div>
-</Card>
 
 <style>
-    h1 {
-        text-align: center;
-    }
-
     div {
         margin: auto;
-        padding: 2px;
+        padding: 20px;
+        text-align: center;
     }
 </style>
