@@ -15,8 +15,14 @@
 <div class="drawer-container">
 	<Drawer bind:open variant="dismissible">
 		<Header>
-			<Title>Menu</Title>
-			<Subtitle>Service Navigator</Subtitle>
+			<Title> Menu </Title>
+			<Subtitle> Service Navigator &nbsp;
+				<!--
+			<Button on:click={()=> (open = !open)} style="justify-content: flex-end">
+				<Label> Close </Label>
+			</Button>
+			-->
+			</Subtitle>
 		</Header>
 		<Content>
 			<List>
@@ -32,7 +38,7 @@
 	<AppContent class="app-content">
 		<main class="main-content">
 			<Button on:click={() => (open = !open)}>
-				<Label> Menu </Label>
+				<Label> Menu {open?"<":">"} </Label>
 			</Button>
 			<Router {routes}/>
 		</main>
@@ -45,7 +51,7 @@
 		display: flex;
 		height: 100%;
 		width: 100%;
-		border: 1px solid;
+		border: 1px solid ;
 		overflow: hidden;
 		z-index: 0;
 	}
