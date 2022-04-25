@@ -58,6 +58,6 @@
 <style>
     div {
         margin: auto;
-        padding: 2px;
+        padding: 20px;
     }
 </style>

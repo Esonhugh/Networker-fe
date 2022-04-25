@@ -2,6 +2,7 @@
     import Button,{Label} from '@smui/button';
     import Textfield from '@smui/textfield';
     import HelperText from '@smui/textfield/helper-text';
+
     let userLogin = {
         username: "",
         password: ""
@@ -51,6 +52,6 @@
 <style>
     div {
         margin: auto;
-        padding: 2px;
+        padding: 20px;
     }
 </style>
