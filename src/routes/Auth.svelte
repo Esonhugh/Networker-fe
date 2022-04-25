@@ -2,7 +2,7 @@
 import Card from '@smui/card';
 
 export let params = {};
-let tabs = ['Login','Register','Verify'];
+let tabs = ['Login','Register'];
 let Mod = tabs[0];
 
 import Tab, { Label } from '@smui/tab';
@@ -19,7 +19,9 @@ import Verify from "./Verify.svelte";
     <TabBar
             {tabs}
             let:tab
-            bind:active={Mod}>
+            bind:active={Mod}
+            style="border: 1px black "
+    >
         <!-- Note: the `tab` property is required! -->
         <Tab {tab}>
             <Label>{tab}</Label>
