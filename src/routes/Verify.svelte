@@ -8,6 +8,7 @@
     export let params = {};
     let Ticket = "";
     let NoAutoSend = true;
+    console.log(Ticket,params)
     if (params.wild === '*' || params.wild === '' || params.wild === null) {
         // 为 空 或者为 "*" 就手动验证
         Ticket = "";

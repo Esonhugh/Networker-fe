@@ -1,6 +1,4 @@
 <script>
-    import Unfinished from "../Unfinished.svelte";
-
     import Button,{Label} from '@smui/button';
     import Textfield from '@smui/textfield';
     import HelperText from '@smui/textfield/helper-text';
@@ -8,12 +6,33 @@
         username: "",
         password: ""
     }
-    async function Login(){
-        alert("Submitted")
+
+    import {apiBase} from "../../setting";
+    import Alert from "../Alert.svelte";
+    let fetchUrl = $apiBase + '/auth/login';
+    let open = false;
+    let returns = "";
+    async function Login() {
+        const res = await fetch(fetchUrl,{
+            method: "POST",
+            mode: 'cors',
+            credentials: "include",
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify(userLogin)
+        })
+        const json = await res.json()
+        open = true;
+        if (res.ok) {
+            returns=json
+            localStorage.setItem("Token",returns.errorcode)
+        } else {
+            returns=json
+        }
     }
 </script>
 
-<Unfinished/>
 <div>
     <Textfield variant="outlined" bind:value={userLogin.username} label="Username">
         <HelperText slot="helper">Username</HelperText>
@@ -26,6 +45,7 @@
     <Button on:click={Login} variant="raised">
         <Label>Submit</Label>
     </Button>
+    <Alert bind:open={open} message="{returns.errormsg}" />
 </div>
 
 <style>

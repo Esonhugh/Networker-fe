@@ -5,7 +5,13 @@
     import {apiBase} from "../setting";
     let fetchUrl = $apiBase + "/peerinfo/list"
     async function getFriendsConfig() {
-        const res = await fetch(fetchUrl);
+        const res = await fetch(fetchUrl,{
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Auth": localStorage.getItem("Token"),
+            },
+        });
         const data = await res.json()
         if (res.ok){
             return data

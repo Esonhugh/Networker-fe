@@ -1,58 +1,38 @@
 <script>
-    import Unfinished from "../Unfinished.svelte";
-
-    export let Ticket;
+    export let Ticket = "";
 
     import {apiBase} from "../../setting";
 
-    let fetchurl = $apiBase + '/verify/' + Ticket;
-    console.log(fetchurl)
-
-    async function verifyHandler() {
-        let res = await fetch(fetchurl, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        let data = await res.json()
-        console.log(data)
-        if (data.statusCode === 200) {
-            return data;
-        } else {
-            throw data;
-        }
-    }
+    let fetchurl = $apiBase + '/auth/verify/' + Ticket;
 
     async function verifyEmailTicket() {
-        const res = fetch(fetchurl, {
+        const res = await fetch(fetchurl, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        const json = res.json()
+        const json = await res.json()
         if (res.ok) {
             return json
         } else {
-            throw json
+            throw new Error(json)
         }
     }
 </script>
 
 <div>
-    <Unfinished/>
-    {#await Promise}
+    {#await verifyEmailTicket()}
         <pre>
             Authing ...
         </pre>
     {:then json}
         <pre>
-            { json.ErrorMsg }
+            { json.errormsg }
         </pre>
     {:catch err}
         <pre>
-            { err.ErrorMsg }
+            { err.errormsg }
         </pre>
     {/await}
 </div>
@@ -68,5 +48,6 @@
         text-align: center;
         font-family: "Microsoft Sans Serif", cursive;
         font-size: 2em;
+        color: orangered;
     }
 </style>
