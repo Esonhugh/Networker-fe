@@ -12,10 +12,15 @@ import Register from "../components/Auth/Register.svelte";
 import Login from "../components/Auth/Login.svelte";
 import Verify from "./Verify.svelte";
 
+import {GetJWTObj} from "../components/token";
+
+import Unfinished from "../components/Unfinished.svelte";
+
 </script>
 
 
 <div>
+    {#if GetJWTObj()==={} }
     <TabBar
             {tabs}
             let:tab
@@ -36,4 +41,10 @@ import Verify from "./Verify.svelte";
             <Verify params="{params}"/>
         {/if}
     </Card>
+    {:else }
+        <Unfinished/>
+        <Card>
+            <p> You are login</p>
+        </Card>
+    {/if}
 </div>
