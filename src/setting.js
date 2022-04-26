@@ -8,5 +8,6 @@ export const GlobalRouter = {
     '/': 'Home',
     '/config': 'Config',
     '/auth/': 'Auth',
+    '/me/': 'Me',
     '/others/': 'Others',
 }

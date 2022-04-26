@@ -4,6 +4,7 @@ import Config from './routes/Config.svelte'
 import Others from "./routes/Others.svelte";
 import Verify from "./routes/Verify.svelte";
 import Auth from "./routes/Auth.svelte";
+import Me from './routes/Me.svelte';
 // Export the route definition object
 export default {
     // Exact path
@@ -19,7 +20,7 @@ export default {
 
     // Wildcard parameter
     // Included twice to match both `/wild` (and nothing after) and `/wild/*` (with anything after)
-    '/me': Home,
+    '/me': Me,
 
     // Catch-all, must be last
     '*': Home,
