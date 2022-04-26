@@ -14,8 +14,8 @@ export default {
 
     // Following is unfinished.....
     // Using named parameters, with last being optional
-    '/Verify/*': Verify,
-    '/Auth/*': Auth,
+    '/verify/*': Verify,
+    '/auth/*': Auth,
 
     // Wildcard parameter
     // Included twice to match both `/wild` (and nothing after) and `/wild/*` (with anything after)

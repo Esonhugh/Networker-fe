@@ -16,7 +16,7 @@
         if (res.ok) {
             return json
         } else {
-            throw new Error(json)
+            throw json
         }
     }
 </script>
