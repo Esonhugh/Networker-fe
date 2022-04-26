@@ -15,7 +15,7 @@ export function GetUsername(){
 
 export function GetJWTObj(){
     let token = localStorage.getItem('Token');
-    let jwtObj = {};
+    let jwtObj = null
     if (token !== null) {
         try {
             jwtObj = JSON.parse(atob(token.split(".")[1]));
@@ -24,4 +24,8 @@ export function GetJWTObj(){
         }
     }
     return jwtObj
+}
+
+export function DeleteToken(){
+    localStorage.removeItem('Token');
 }

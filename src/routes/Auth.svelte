@@ -1,26 +1,31 @@
 <script>
 import Card from '@smui/card';
 
+// params on routes
 export let params = {};
+
+// tabs bar setting
 let tabs = ['Login','Register'];
 let Mod = tabs[0];
 
 import Tab, { Label } from '@smui/tab';
 import TabBar from '@smui/tab-bar';
 
+// component invoke
 import Register from "../components/Auth/Register.svelte";
 import Login from "../components/Auth/Login.svelte";
 import Verify from "./Verify.svelte";
+import Logout from "../components/Auth/Logout.svelte";
 
+// func
 import {GetJWTObj} from "../components/token";
 
-import Unfinished from "../components/Unfinished.svelte";
 
 </script>
 
 
 <div>
-    {#if GetJWTObj()==={} }
+    {#if GetJWTObj() === null } <!-- not Login -->
     <TabBar
             {tabs}
             let:tab
@@ -42,9 +47,15 @@ import Unfinished from "../components/Unfinished.svelte";
         {/if}
     </Card>
     {:else }
-        <Unfinished/>
-        <Card>
-            <p> You are login</p>
-        </Card>
+        <Logout/>
     {/if}
 </div>
+
+<style>
+    h1 {
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
+</style>
