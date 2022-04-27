@@ -8,19 +8,18 @@
 
     import {GetUsername} from "../token";
     /*
-   {
-    "id": 0,
-    "username": "",
-    "asn": "",
-    "public_access": "",
-    "wireguard_key": "",
-    "dn42_ipv4": "",
-    "dn42_ipv6": ""
-       }
-     */
+{
+"id": 0,
+"username": "",
+"asn": "",
+"public_access": "",
+"wireguard_key": "",
+"dn42_ipv4": "",
+"dn42_ipv6": ""
+   }
+ */
     import Formfield from '@smui/form-field';
     import ConfigGenerate from "./ConfigGenerate.svelte";
-    import Unfinished from "../Unfinished.svelte";
 
     export let config = {};
 
@@ -110,18 +109,23 @@
                 </Button>
                 <Alert bind:open message="{returns.errormsg}"/>
                 <Button on:click={PreviewMyConfig}>
-                    <Label>Preview</Label>
+                    {#if preview}
+                        <Label>Refresh</Label>
+                    {:else}
+                        <Label>Preview</Label>
+                    {/if}
                 </Button>
+                {#if preview}
+                    <Button on:click={()=> (preview = false)}>
+                        <Label>Preview Off</Label>
+                    </Button>
+                {/if}
             </div>
         </div>
     </Formfield>
     <Formfield>
         {#if preview}
-            <ConfigGenerate bind:MyConfig="{userconfig}" bind:AdminConfig="{adminconfig}"/>
-        {:else}
-            <div>
-                <Unfinished/>
-            </div>
+            <ConfigGenerate bind:MyConfig="{userconfig}" bind:AdminConfig="{adminconfig}" slot=""/>
         {/if}
     </Formfield>
 </div>

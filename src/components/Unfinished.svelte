@@ -4,8 +4,8 @@
 
 <div>
     <Card style="background: yellow;border: black solid;">
-        <h2>Working in progress Now.</h2>
-        <pre>Not Ready for public</pre>
+        <h2> System is working in progress Now.</h2>
+        <pre> please wait ... </pre>
     </Card>
 </div>
 

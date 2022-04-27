@@ -19,7 +19,7 @@
     <Textfield
             bind:value={data}
             input$cols={60}
-            input$resizable={false}
+            input$resizable={true}
             input$rows={46}
             label="wireguard Config and bird config"
             textarea
