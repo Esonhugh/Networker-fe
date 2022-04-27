@@ -16,8 +16,8 @@
 "wireguard_key": "",
 "dn42_ipv4": "",
 "dn42_ipv6": ""
-   }
- */
+}
+*/
     import Formfield from '@smui/form-field';
     import ConfigGenerate from "./ConfigGenerate.svelte";
 
@@ -104,11 +104,11 @@
                 </div>
             {/each}
             <div>
-                <Button on:click={UpdateMyConfig}>
+                <Button on:click={UpdateMyConfig} variant="raised">
                     <Label>Update</Label>
                 </Button>
                 <Alert bind:open message="{returns.errormsg}"/>
-                <Button on:click={PreviewMyConfig}>
+                <Button on:click={PreviewMyConfig} variant="raised">
                     {#if preview}
                         <Label>Refresh</Label>
                     {:else}
@@ -116,7 +116,7 @@
                     {/if}
                 </Button>
                 {#if preview}
-                    <Button on:click={()=> (preview = false)}>
+                    <Button on:click={()=> (preview = false)} variant="raised">
                         <Label>Preview Off</Label>
                     </Button>
                 {/if}

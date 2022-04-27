@@ -32,11 +32,11 @@
     <Card>
         <h1>My Config</h1>
         {#await GetMyConfig()}
-            <p>Loading.. Data</p>
+            <pre>Loading.. Data</pre>
         {:then data}
                     <ChangeableConfigTable config="{data}"/>
         {:catch e}
-            <p> { e.errormsg } </p>
+            <pre> { e.errormsg } </pre>
         {/await}
     </Card>
 </div>
@@ -44,6 +44,9 @@
 <style>
     h1 {
         text-align: center;
-        color: orangered;
+    }
+
+    pre {
+        text-align: center;
     }
 </style>

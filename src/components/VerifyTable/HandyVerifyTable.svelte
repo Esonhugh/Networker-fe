@@ -7,7 +7,6 @@
     let send = false;
 
     async function verifyEmailTicket() {
-        // todo: Send Verify ticket.
         // window.href = window.location + '/' + Ticket;
         let fetchurl = $apiBase + '/auth/verify/' + Ticket;
         const res = await fetch(fetchurl, {
