@@ -1,11 +1,12 @@
 <script>
     import Alert from "../Alert.svelte";
 
-    import Button,{Label} from '@smui/button';
+    import Button, {Label} from '@smui/button';
     import Textfield from '@smui/textfield';
     import HelperText from '@smui/textfield/helper-text';
 
     import {apiBase} from "../../setting";
+
     let userReg = {
         username: "",
         password: "",
@@ -38,13 +39,13 @@
 
 <div>
     <Textfield variant="outlined" bind:value={userReg.username} label="Username">
-        <HelperText slot="helper">Username</HelperText>
+        <HelperText slot="helper">Username.length should in range(4,20)</HelperText>
     </Textfield>
     <Textfield variant="outlined" bind:value={userReg.password} label="Password">
-        <HelperText slot="helper">Password</HelperText>
+        <HelperText slot="helper">Password.length should in range(8,20)</HelperText>
     </Textfield>
     <Textfield variant="outlined" bind:value={userReg.email} label="Email">
-        <HelperText slot="helper">Email</HelperText>
+        <HelperText slot="helper">Email.username@domain format.used to contact you.</HelperText>
     </Textfield>
 </div>
 <div>
