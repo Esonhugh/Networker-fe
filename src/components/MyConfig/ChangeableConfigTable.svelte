@@ -7,12 +7,27 @@
     import HelperText from '@smui/textfield/helper-text';
 
     import {GetUsername} from "../token";
+    /*
+   {
+    "id": 0,
+    "username": "",
+    "asn": "",
+    "public_access": "",
+    "wireguard_key": "",
+    "dn42_ipv4": "",
+    "dn42_ipv6": ""
+       }
+     */
+    import Formfield from '@smui/form-field';
+    import ConfigGenerate from "./ConfigGenerate.svelte";
+    import Unfinished from "../Unfinished.svelte";
 
     export let config = {};
 
     let MyConfigPath = $apiBase + '/peerinfo/me';
     let open = false;
     let returns = {};
+
     let userconfig = {
         username: GetUsername(),
         asn: config.asn === undefined ? "" : config.asn,
@@ -21,7 +36,6 @@
         dn42_ipv4: config.dn42_ipv4 === undefined ? "" : config.dn42_ipv4,
         dn42_ipv6: config.dn42_ipv6 === undefined ? "" : config.dn42_ipv6,
     }
-    console.log(config)
 
     async function UpdateMyConfig() {
         const res = await fetch(MyConfigPath, {
@@ -50,44 +64,72 @@
         "dn42_ipv4": "Your Dn42 data inet4",
         "dn42_ipv6": "Your Dn42 data inet6",
     }
-    /*
-   {
-    "id": 0,
-    "username": "",
-    "asn": "",
-    "public_access": "",
-    "wireguard_key": "",
-    "dn42_ipv4": "",
-    "dn42_ipv6": ""
-       }
-     */
+
+    let adminconfig = {
+        "id": 0,
+        "username": "",
+        "asn": "",
+        "public_access": "",
+        "wireguard_key": "",
+        "dn42_ipv4": "",
+        "dn42_ipv6": ""
+    } // let admin empty
+    let preview = false;
+    let configUrl = $apiBase + '/config';
+
+    async function PreviewMyConfig() {
+        const res = await fetch(configUrl);
+        const text = await res.json();
+        preview = true;
+        if (res.ok) {
+            adminconfig = text;
+        } else {
+            throw text
+        }
+    }
 </script>
 
 <div>
-    {#each configkey as key}
+    <Formfield>
         <div>
-            <Textfield
-                    variant="outlined"
-                    bind:value={ userconfig[key] }
-                    label="{key}"
-                    style="width: 100%"
-            >
-                <HelperText slot="helper">{rules[key]}</HelperText>
-            </Textfield>
+            {#each configkey as key}
+                <div>
+                    <Textfield
+                            variant="outlined"
+                            bind:value={ userconfig[key] }
+                            label="{key}"
+                            style="width: 100%"
+                    >
+                        <HelperText slot="helper">{rules[key]}</HelperText>
+                    </Textfield>
+                </div>
+            {/each}
+            <div>
+                <Button on:click={UpdateMyConfig}>
+                    <Label>Update</Label>
+                </Button>
+                <Alert bind:open message="{returns.errormsg}"/>
+                <Button on:click={PreviewMyConfig}>
+                    <Label>Preview</Label>
+                </Button>
+            </div>
         </div>
-    {/each}
-</div>
-<div>
-    <Button on:click={UpdateMyConfig}>
-        <Label>Update</Label>
-    </Button>
-    <Alert bind:open message="{returns.errormsg}"/>
+    </Formfield>
+    <Formfield>
+        {#if preview}
+            <ConfigGenerate bind:MyConfig="{userconfig}" bind:AdminConfig="{adminconfig}"/>
+        {:else}
+            <div>
+                <Unfinished/>
+            </div>
+        {/if}
+    </Formfield>
 </div>
 
 <style>
     div {
         margin: auto;
-        padding: 20px;
+        padding: 10px;
         align-items: center;
     }
 </style>

@@ -1,26 +1,23 @@
 <script>
-import Card from '@smui/card';
+    import Card from '@smui/card';
+    import Tab, {Label} from '@smui/tab';
+    import TabBar from '@smui/tab-bar';
 
-// params on routes
-export let params = {};
+    // component invoke
+    import Register from "../components/Auth/Register.svelte";
+    import Login from "../components/Auth/Login.svelte";
+    import Verify from "./Verify.svelte";
+    import Logout from "../components/Auth/Logout.svelte";
 
-// tabs bar setting
-let tabs = ['Login','Register'];
-let Mod = tabs[0];
+    // func
+    import {GetJWTObj} from "../components/token";
 
-import Tab, { Label } from '@smui/tab';
-import TabBar from '@smui/tab-bar';
+    // params on routes
+    export let params = {};
 
-// component invoke
-import Register from "../components/Auth/Register.svelte";
-import Login from "../components/Auth/Login.svelte";
-import Verify from "./Verify.svelte";
-import Logout from "../components/Auth/Logout.svelte";
-
-// func
-import {GetJWTObj} from "../components/token";
-
-
+    // tabs bar setting
+    let tabs = ['Login', 'Register'];
+    let Mod = tabs[0];
 </script>
 
 
@@ -51,11 +48,3 @@ import {GetJWTObj} from "../components/token";
     {/if}
 </div>
 
-<style>
-    h1 {
-        text-align: center;
-    }
-    p {
-        text-align: center;
-    }
-</style>

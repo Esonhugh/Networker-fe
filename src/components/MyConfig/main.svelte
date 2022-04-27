@@ -34,7 +34,7 @@
         {#await GetMyConfig()}
             <p>Loading.. Data</p>
         {:then data}
-            <ChangeableConfigTable config="{data}"/>
+                    <ChangeableConfigTable config="{data}"/>
         {:catch e}
             <p> { e.errormsg } </p>
         {/await}

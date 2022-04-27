@@ -8,15 +8,6 @@
     function verifyLogin() {
         return GetJWTObj() !== null;
     }
-
-    // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VybmFtZSI6ImVzb25odWdocyIsImV4cCI6MTY1MTExMjczOCwiaXNzIjoiRXNvbmh1Z2gifQ.58QeVyp0HLvxJulvP4pmm9qMIAvb_7w76D9ndoLq_Lk
-    /*
-    {
-    "Username": "esonhughs",
-        "exp": 1651112738,
-        "iss": "Esonhugh"
-    }
-    */
 </script>
 
 <div>
