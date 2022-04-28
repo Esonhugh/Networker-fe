@@ -9,6 +9,4 @@ function build_by_local() {
   echo "build success: at dir `pwd`/output"
 }
 
-function build_by_action() {
-  git clone ${Project_url} --branch app
-}
+build_by_local
