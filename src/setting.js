@@ -9,5 +9,5 @@ export const GlobalRouter = {
     '/config': 'Config',
     '/auth/': 'Auth',
     '/me/': 'Me',
-    '/others/': 'Others',
+    '/others/': 'Other Friends',
 }
