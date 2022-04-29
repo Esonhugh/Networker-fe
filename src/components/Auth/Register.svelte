@@ -15,6 +15,7 @@
     let open = false;
     let fetchUrl = $apiBase + '/auth/register'
     let returns = "";
+    let recheckpass = "";
     async function Register(){
         const res = await fetch(fetchUrl,{
             method: "POST",
@@ -33,20 +34,45 @@
             returns = json.errormsg
             throw json
         }
-
     }
 </script>
 
 <div>
-    <Textfield variant="outlined" bind:value={userReg.username} label="Username">
-        <HelperText slot="helper">Username.length should in range(4,20)</HelperText>
+    <Textfield
+            bind:value={userReg.email}
+            label="Email"
+            type="email"
+            variant="outlined"
+    >
+        <HelperText slot="helper">Email.used to contact you.</HelperText>
     </Textfield>
-    <Textfield variant="outlined" bind:value={userReg.password} label="Password">
-        <HelperText slot="helper">Password.length should in range(8,20)</HelperText>
+    <Textfield
+            bind:value={userReg.username}
+            label="Username"
+            type="username"
+            variant="outlined"
+    >
+        <HelperText slot="helper">Username.length in range(4,20)</HelperText>
     </Textfield>
-    <Textfield variant="outlined" bind:value={userReg.email} label="Email">
-        <HelperText slot="helper">Email.username@domain format.used to contact you.</HelperText>
+    <Textfield
+            bind:value={userReg.password}
+            label="Password"
+            type="password"
+            variant="outlined"
+    >
+        <HelperText slot="helper">Password.length in range(8,20)</HelperText>
     </Textfield>
+    <Textfield
+            bind:value={recheckpass}
+            label="Password Again"
+            type="password"
+            variant="outlined"
+    >
+        <HelperText slot="helper">Equal to the password</HelperText>
+    </Textfield>
+    {#if (recheckpass !== userReg.password)}
+        <p>Password are not equal</p>
+    {/if}
 </div>
 <div>
     <Button on:click={Register} variant="raised">
@@ -60,5 +86,10 @@
     div {
         margin: auto;
         padding: 20px;
+    }
+
+    p {
+        text-align: center;
+        color: red;
     }
 </style>

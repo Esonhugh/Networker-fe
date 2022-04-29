@@ -1,18 +1,19 @@
 <script>
-    import Button,{Label} from '@smui/button';
+    import Button, {Label} from '@smui/button';
     import Textfield from '@smui/textfield';
     import HelperText from '@smui/textfield/helper-text';
+    import {apiBase} from "../../setting";
+    import Alert from "../Alert.svelte";
 
     let userLogin = {
         username: "",
         password: ""
     }
 
-    import {apiBase} from "../../setting";
-    import Alert from "../Alert.svelte";
     let fetchUrl = $apiBase + '/auth/login';
     let open = false;
     let returns = "";
+
     async function Login() {
         const res = await fetch(fetchUrl,{
             method: "POST",
@@ -35,18 +36,28 @@
 </script>
 
 <div>
-    <Textfield variant="outlined" bind:value={userLogin.username} label="Username">
-        <HelperText slot="helper">Username</HelperText>
+    <Textfield
+            bind:value={userLogin.username}
+            label="Username"
+            type="username"
+            variant="outlined"
+    >
+        <HelperText slot="helper">Username,as your register</HelperText>
     </Textfield>
-    <Textfield variant="outlined"  bind:value={userLogin.password} label="Password">
-        <HelperText slot="helper">Password</HelperText>
+    <Textfield
+            bind:value={userLogin.password}
+            label="Password"
+            type="password"
+            variant="outlined"
+    >
+        <HelperText slot="helper">Password,as your register</HelperText>
     </Textfield>
 </div>
 <div>
     <Button on:click={Login} variant="raised">
         <Label>Submit</Label>
     </Button>
-    <Alert bind:open={open} message="{returns.errormsg}" />
+    <Alert bind:open={open} message="{returns.errormsg}"/>
 </div>
 
 <style>
