@@ -5,6 +5,7 @@ import Others from "./routes/Others.svelte";
 import Verify from "./routes/Verify.svelte";
 import Auth from "./routes/Auth.svelte";
 import Me from './routes/Me.svelte';
+import NotFound from './routes/NotFound.svelte';
 // Export the route definition object
 export default {
     // Exact path
@@ -23,5 +24,5 @@ export default {
     '/me': Me,
 
     // Catch-all, must be last
-    '*': Home,
+    '*': NotFound,
 }
